@@ -1,5 +1,9 @@
 package com.hsgc.store;
-
+/**
+ * 
+ * @author hamid
+ *
+ */
 public class Product {
 	private Integer id;
 	private String name;
