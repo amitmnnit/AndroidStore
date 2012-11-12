@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 /**
  * 
  * @author hamid
@@ -18,11 +19,26 @@ public class ProductDetailViewActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail_view);
+
+        populateProductForm();
         addBackButtonListener();
         addEditButtonListener();
     }
 
-    private void addBackButtonListener() {
+    private void populateProductForm() {
+        String product_id = this.getIntent().getExtras().getString("id");
+ 
+        if (product_id != null){
+	        Product product = MainActivity.db.get(new Integer(product_id));
+	        ((TextView)findViewById(R.id.product_name)).setText(product.getName());
+	        ((TextView)findViewById(R.id.product_brand)).setText(product.getBrand());
+	        ((TextView)findViewById(R.id.product_sku)).setText(product.getSku());
+	        ((TextView)findViewById(R.id.product_price)).setText("" + product.getPrice());
+	        ((TextView)findViewById(R.id.product_qty)).setText("" + product.getQuantity());
+        }   
+	}
+
+	private void addBackButtonListener() {
     	Button button = (Button)findViewById(R.id.back_button);
     	button.setOnClickListener(new OnClickListener(){
 

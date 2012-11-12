@@ -8,5 +8,7 @@
     <string name="title_activity_product_detail">View Product</string>
     <string name="title_activity_product_detail_edit">Edit Product</string>
     <string name="title_activity_product_detail_new">New Product</string>
+    <string name="product_id">product id</string>
+    <string name="product_name">product name</string>
 
 </resources>

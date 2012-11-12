@@ -30,6 +30,7 @@
              android:text="Name">
          </TextView>
          <TextView
+             android:id="@+id/product_name"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Name">             
@@ -40,6 +41,7 @@
              android:text="Brand">
          </TextView>
          <TextView
+             android:id="@+id/product_brand"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Brand">                
@@ -50,6 +52,7 @@
              android:text="SKU">
          </TextView>
          <TextView
+             android:id="@+id/product_sku"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="SKU">             
@@ -60,6 +63,7 @@
              android:text="Price">
          </TextView>
          <TextView
+             android:id="@+id/product_price"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Price">             
@@ -70,6 +74,7 @@
              android:text="Quantity">
          </TextView>
          <TextView
+             android:id="@+id/product_qty"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Quantity">             

@@ -45,13 +45,13 @@ public class DatabaseTest extends AndroidTestCase {
 	}	
 	
 	public void testFind(){
-		List<Object> list = db.find("id IN (?, ?, ?)", new String[]{"1","2","3"});
+		List<Product> list = db.find("id IN (?, ?, ?)", new String[]{"1","2","3"});
 		assertTrue(list.size() > 0);
 		Log.d(LOG_JUNIT, "testFind() called!");
 	}
 	
 	public void testFindAll(){
-		List<Object> list = db.findAll();
+		List<Product> list = db.findAll();
 		assertTrue(list.size() > 0);
 		Log.d(LOG_JUNIT, "testFindAll() called!");		
 	}

@@ -1,16 +1,19 @@
 package com.hsgc.store;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 /**
  * 
@@ -18,11 +21,14 @@ import android.widget.Toast;
  *
  */
 public class MainActivity extends Activity {
-
+	public static Database db;
+	public static final String LOG_TAG = "Store";
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = new Database(this);
         populateProductList();
         addListItemListener();
         addNewButtonListener();
@@ -71,7 +77,13 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int arg2,
 					long arg3) {
+				TextView pidTV = (TextView)view.findViewById(R.id.product_id);
+				
+				Bundle bundle = new Bundle();
+				bundle.putString("id", pidTV.getText().toString());
+				
 				Intent intent = new Intent(MainActivity.this, ProductDetailViewActivity.class);
+				intent.putExtras(bundle);
 				startActivity(intent);
 			}
     		
@@ -79,9 +91,17 @@ public class MainActivity extends Activity {
 	}
 
 	private void populateProductList() {
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"iPhone", "Galaxy", "Blackberry", "Nexus"});
-    	ListView lv = (ListView)findViewById(R.id.product_list);
-    	lv.setAdapter(adapter);
+    	try {		
+    		List<Product> list = db.findAll();
+		
+    		//list.add(new Product(1, "iPhone", "Apple", "SKU", 100.00f, 1));
+    		ProductAdapter adapter = new ProductAdapter(this, list);
+    		ListView lv = (ListView)findViewById(R.id.product_list);
+
+    		lv.setAdapter(adapter);
+    	} catch (Exception e){
+    		Log.d(LOG_TAG, "", e);
+    	}
 	}
 
 	@Override

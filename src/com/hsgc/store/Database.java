@@ -40,6 +40,10 @@ public class Database extends SQLiteOpenHelper {
 			int version) {
 		super(context, name, factory, version);
 	}
+	
+	public Database(Context context){
+		this(context, "store.db", null, 1);
+	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -122,7 +126,7 @@ public class Database extends SQLiteOpenHelper {
 	 * @param id
 	 * @return
 	 */
-	public Object get(Integer id){
+	public Product get(Integer id){
 		Product product = null;
 		SQLiteDatabase db = getReadableDatabase();
 		Cursor c = db.query(TABLE, new String[]{ID_COL, NAME_COL, BRAND_COL, SKU_COL, PRICE_COL, QTY_COL}, ID_COL + "=?", new String[]{id.toString()}, null, null, null);
@@ -156,8 +160,8 @@ public class Database extends SQLiteOpenHelper {
 	 * @param selectionArgs
 	 * @return
 	 */
-	public List<Object> find(String selections, String selectionArgs[]){
-		List<Object> result = new ArrayList<Object>();
+	public List<Product> find(String selections, String selectionArgs[]){
+		List<Product> result = new ArrayList<Product>();
 		SQLiteDatabase db = getReadableDatabase();
 		Cursor c = db.query(TABLE, new String[]{ID_COL, NAME_COL, BRAND_COL, SKU_COL, PRICE_COL, QTY_COL}, selections, selectionArgs, null, null, null);
 		while (c.moveToNext()){
@@ -168,7 +172,7 @@ public class Database extends SQLiteOpenHelper {
 		return result;
 	}
 	
-	public List<Object> findAll(){
+	public List<Product> findAll(){
 		return find(null, null);
 	}
 	/**
