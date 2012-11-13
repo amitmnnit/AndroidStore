@@ -43,6 +43,16 @@ public class DatabaseTest extends AndroidTestCase {
 		assertTrue(db.get(id) != null);
 		Log.d(LOG_JUNIT, "testGet() called!");		
 	}	
+
+	public void testUpdate(){
+		product.setId(1);
+		product.setName("Galaxy");
+		boolean status = db.update(product);
+		assertTrue(status);
+		product = db.get(product.getId());
+		assertEquals(product.getName(), "Galaxy");
+		Log.d(LOG_JUNIT, "testUpdate() called!");
+	}	
 	
 	public void testFind(){
 		List<Product> list = db.find("id IN (?, ?, ?)", new String[]{"1","2","3"});
@@ -59,7 +69,7 @@ public class DatabaseTest extends AndroidTestCase {
 	public void testDelete(){
 		Integer id = db.create(product);
 		assertNotSame(DB_EXEC_ERROR, id);
-		assertEquals(1, db.delete(id));
+		assertTrue(db.delete(id));
 		Log.d(LOG_JUNIT, "testDelete() called!");
 	}
 }

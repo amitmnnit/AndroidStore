@@ -23,6 +23,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	public static Database db;
 	public static final String LOG_TAG = "Store";
+	public static Product product = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,11 +80,9 @@ public class MainActivity extends Activity {
 					long arg3) {
 				TextView pidTV = (TextView)view.findViewById(R.id.product_id);
 				
-				Bundle bundle = new Bundle();
-				bundle.putString("id", pidTV.getText().toString());
+				MainActivity.product = db.get(Integer.valueOf(pidTV.getText().toString()));
 				
 				Intent intent = new Intent(MainActivity.this, ProductDetailViewActivity.class);
-				intent.putExtras(bundle);
 				startActivity(intent);
 			}
     		

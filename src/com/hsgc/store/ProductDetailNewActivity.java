@@ -1,12 +1,14 @@
 package com.hsgc.store;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 /**
  * 
@@ -56,7 +58,29 @@ public class ProductDetailNewActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(ProductDetailNewActivity.this, "Save: Yet to be implemented!", Toast.LENGTH_SHORT).show();	
+				boolean status = false;
+				String message = "Product saved!";
+				try {
+			        //String pid = ((TextView)findViewById(R.id.nproduct_id)).getText().toString();
+			        String name = ((TextView)findViewById(R.id.nproduct_name)).getText().toString();
+			        String brand = ((TextView)findViewById(R.id.nproduct_brand)).getText().toString();
+			        String sku = ((TextView)findViewById(R.id.nproduct_sku)).getText().toString();
+			        String price = ((TextView)findViewById(R.id.nproduct_price)).getText().toString();
+			        String qty = ((TextView)findViewById(R.id.nproduct_qty)).getText().toString();
+					
+			        Product product = new Product(null, name, brand, sku, Float.valueOf(price), Integer.valueOf(qty));
+			        int count = MainActivity.db.create(product);
+			        status = (count > 0);
+			        
+				} catch (Exception e){
+					Log.d("Store", "Saving error", e);
+					message = "Product not saved!";
+				}
+		        Toast.makeText(ProductDetailNewActivity.this, message, Toast.LENGTH_SHORT).show();	
+		        if (status) {
+					Intent intent = new Intent(ProductDetailNewActivity.this, MainActivity.class);
+					startActivity(intent);		        	
+		        }
 			}
     		
     	});	

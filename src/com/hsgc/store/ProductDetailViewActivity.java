@@ -26,15 +26,13 @@ public class ProductDetailViewActivity extends Activity {
     }
 
     private void populateProductForm() {
-        String product_id = this.getIntent().getExtras().getString("id");
- 
-        if (product_id != null){
-	        Product product = MainActivity.db.get(new Integer(product_id));
-	        ((TextView)findViewById(R.id.product_name)).setText(product.getName());
-	        ((TextView)findViewById(R.id.product_brand)).setText(product.getBrand());
-	        ((TextView)findViewById(R.id.product_sku)).setText(product.getSku());
-	        ((TextView)findViewById(R.id.product_price)).setText("" + product.getPrice());
-	        ((TextView)findViewById(R.id.product_qty)).setText("" + product.getQuantity());
+        if (MainActivity.product != null){
+	        ((TextView)findViewById(R.id.product_id)).setText("" + MainActivity.product.getId());
+	        ((TextView)findViewById(R.id.product_name)).setText(MainActivity.product.getName());
+	        ((TextView)findViewById(R.id.product_brand)).setText(MainActivity.product.getBrand());
+	        ((TextView)findViewById(R.id.product_sku)).setText(MainActivity.product.getSku());
+	        ((TextView)findViewById(R.id.product_price)).setText("" + MainActivity.product.getPrice());
+	        ((TextView)findViewById(R.id.product_qty)).setText("" + MainActivity.product.getQuantity());
         }   
 	}
 

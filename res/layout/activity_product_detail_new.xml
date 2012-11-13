@@ -25,11 +25,18 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical">
          <TextView 
+             android:id="@+id/nproduct_id"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:visibility="invisible">
+         </TextView>       
+         <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Name">
          </TextView>
          <EditText
+             android:id="@+id/nproduct_name"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Name">             
@@ -40,6 +47,7 @@
              android:text="Brand">
          </TextView>
          <EditText
+             android:id="@+id/nproduct_brand"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Brand">                
@@ -50,6 +58,7 @@
              android:text="SKU">
          </TextView>
          <EditText
+             android:id="@+id/nproduct_sku"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="SKU">             
@@ -60,6 +69,7 @@
              android:text="Price">
          </TextView>
          <EditText
+             android:id="@+id/nproduct_price"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Price">             
@@ -70,6 +80,7 @@
              android:text="Quantity">
          </TextView>
          <EditText
+             android:id="@+id/nproduct_qty"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:hint="Quantity">             

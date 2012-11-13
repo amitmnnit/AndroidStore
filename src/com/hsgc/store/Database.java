@@ -106,8 +106,8 @@ public class Database extends SQLiteOpenHelper {
 	 * @param id
 	 * @return
 	 */
-	public int delete(Integer id){
-		return  getWritableDatabase().delete(TABLE, ID_COL +"=?", new String[]{id.toString()});
+	public boolean delete(Integer id){
+		return  (getWritableDatabase().delete(TABLE, ID_COL +"=?", new String[]{id.toString()}) > 0);
 	}
 	
 	/**
@@ -116,9 +116,25 @@ public class Database extends SQLiteOpenHelper {
 	 * @param entityClass
 	 * @return
 	 */
-	public Integer saveOrUpdate(Object entity, Class entityClass){
+	public boolean update(Product entity){
+		boolean status = false;
+		SQLiteDatabase db = getWritableDatabase();
 		
-		return null;
+		Product existing = get(entity.getId());
+		
+		if (existing != null){
+			ContentValues cv = new ContentValues();
+			cv.put(NAME_COL, entity.getName());
+			cv.put(BRAND_COL, entity.getBrand());
+			cv.put(SKU_COL, entity.getSku());
+			cv.put(PRICE_COL, "" + entity.getPrice());
+			cv.put(QTY_COL, "" + entity.getPrice());
+			
+			int count = db.update(TABLE, cv, ID_COL + "=?", new String[]{"" + entity.getId()});
+			status = (count > 0);
+		}
+		
+		return status;
 	}
 
 	/**
