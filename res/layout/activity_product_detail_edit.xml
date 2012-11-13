@@ -11,13 +11,13 @@
             android:id="@+id/back_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content" 
-            android:text="Back"
+            android:text="@string/back"
             android:layout_weight="0.1"/>
          <Button
             android:id="@+id/delete_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content" 
-            android:text="Delete"
+            android:text="@string/delete"
             android:layout_weight="0.1"/>       
     </LinearLayout>    
 	<LinearLayout 
@@ -33,57 +33,57 @@
          <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Name">
+             android:text="@string/name">
          </TextView>
          <EditText
              android:id="@+id/eproduct_name"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="Name">             
+             android:hint="@string/name">             
          </EditText>   
          <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Brand">
+             android:text="@string/brand">
          </TextView>
          <EditText
               android:id="@+id/eproduct_brand"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="Brand">                
+             android:hint="@string/brand">                
          </EditText>            
           <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="SKU">
+             android:text="@string/sku">
          </TextView>
          <EditText
              android:id="@+id/eproduct_sku"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="SKU">             
+             android:hint="@string/sku">             
          </EditText>  
           <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Price">
+             android:text="@string/price">
          </TextView>
          <EditText
              android:id="@+id/eproduct_price"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="Price">             
+             android:hint="@string/price">             
          </EditText>  
           <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Quantity">
+             android:text="@string/quantity">
          </TextView>
          <EditText
              android:id="@+id/eproduct_qty"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="Quantity">             
+             android:hint="@string/quantity">             
          </EditText>                          
 	</LinearLayout>   
     <LinearLayout
@@ -94,7 +94,7 @@
             android:id="@+id/save_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content" 
-            android:text="Save"
+            android:text="@string/save"
             android:layout_weight="1"/>     
     </LinearLayout> 	 
 </LinearLayout>

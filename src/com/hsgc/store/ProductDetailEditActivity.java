@@ -46,7 +46,7 @@ public class ProductDetailEditActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				boolean status = false;
-				String message = "Product updated!";
+				String message = getString(R.string.product_updated_text);
 				try {
 			        //String pid = ((TextView)findViewById(R.id.eproduct_id)).getText().toString();
 			        String name = ((TextView)findViewById(R.id.eproduct_name)).getText().toString();
@@ -59,7 +59,7 @@ public class ProductDetailEditActivity extends Activity {
 			        status = MainActivity.db.update(product);	        
 				} catch (Exception e){
 					Log.d("Store", "Saving error", e);
-					message = "Product not updated!";
+					message = getString(R.string.product_not_updated_text);
 				}
 		        Toast.makeText(ProductDetailEditActivity.this, message, Toast.LENGTH_SHORT).show();	
 		        if (status) {
@@ -77,9 +77,9 @@ public class ProductDetailEditActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				String message = "Product deleted!";
+				String message = getString(R.string.product_not_deleted_text);
 				boolean status = MainActivity.db.delete(MainActivity.product.getId());
-				if (status) message = "Product not deleted!";
+				if (status) message = getString(R.string.product_deleted_text);
 				Toast.makeText(ProductDetailEditActivity.this, message, Toast.LENGTH_SHORT).show();	
 				if (status){
 					Intent intent = new Intent(ProductDetailEditActivity.this, MainActivity.class);

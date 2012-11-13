@@ -59,7 +59,7 @@ public class ProductDetailNewActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				boolean status = false;
-				String message = "Product saved!";
+				String message = getString(R.string.product_saved_text);
 				try {
 			        //String pid = ((TextView)findViewById(R.id.nproduct_id)).getText().toString();
 			        String name = ((TextView)findViewById(R.id.nproduct_name)).getText().toString();
@@ -74,7 +74,7 @@ public class ProductDetailNewActivity extends Activity {
 			        
 				} catch (Exception e){
 					Log.d("Store", "Saving error", e);
-					message = "Product not saved!";
+					message = getString(R.string.product_not_saved_text);
 				}
 		        Toast.makeText(ProductDetailNewActivity.this, message, Toast.LENGTH_SHORT).show();	
 		        if (status) {
