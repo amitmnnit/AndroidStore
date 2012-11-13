@@ -24,6 +24,8 @@ public class MainActivity extends Activity {
 	public static Database db;
 	public static final String LOG_TAG = "Store";
 	public static Product product = null;
+	public static boolean isLogin = false;
+	public static String username = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,15 +37,45 @@ public class MainActivity extends Activity {
         addNewButtonListener();
         addSyncButtonListener();
         addLoginButtonListener();
+        addLogoutButtonListener();
+        reflectLoginStatus();
     }
 
-    private void addLoginButtonListener() {
+    private void addLogoutButtonListener() {
+    	Button button = (Button)findViewById(R.id.logout_button);
+    	button.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				isLogin = false;
+				Toast.makeText(MainActivity.this, "Logout successful!", Toast.LENGTH_SHORT).show();	
+				Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+				startActivity(intent);	
+			}
+    	});
+	}
+
+	private void reflectLoginStatus() {
+    	Button loginBtn = (Button) findViewById(R.id.login_button);
+    	Button logoutBtn = (Button) findViewById(R.id.logout_button);
+    	Button syncBtn = (Button) findViewById(R.id.sync_button);
+    	Button newBtn = (Button) findViewById(R.id.new_button);
+    	loginBtn.setVisibility(isLogin ? View.INVISIBLE: View.VISIBLE);
+    	loginBtn.setWidth(!isLogin ? 1 : 0);    	
+    	logoutBtn.setVisibility(!isLogin ? View.INVISIBLE: View.VISIBLE);
+    	logoutBtn.setWidth(!isLogin ? 1 : 0); 
+    	syncBtn.setEnabled(isLogin);
+    	newBtn.setEnabled(isLogin);
+	}
+
+	private void addLoginButtonListener() {
     	Button button = (Button)findViewById(R.id.login_button);
     	button.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(MainActivity.this, "Login: Yet to be implemented!", Toast.LENGTH_SHORT).show();	
+				Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+				startActivity(intent);			
 			}
     	});
 	}

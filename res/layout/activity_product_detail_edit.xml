@@ -66,13 +66,15 @@
           <TextView 
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="@string/price">
+             android:text="@string/price"
+             >
          </TextView>
          <EditText
              android:id="@+id/eproduct_price"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="@string/price">             
+             android:hint="@string/price"
+             android:inputType="numberDecimal">             
          </EditText>  
           <TextView 
              android:layout_width="match_parent"
@@ -83,7 +85,8 @@
              android:id="@+id/eproduct_qty"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:hint="@string/quantity">             
+             android:hint="@string/quantity"
+             android:inputType="number">             
          </EditText>                          
 	</LinearLayout>   
     <LinearLayout
